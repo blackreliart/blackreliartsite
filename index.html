@@ -1,115 +1,202 @@
 <!DOCTYPE html>
-<html lang="de">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="stylesheet" type="text/css" href="dark-mode.css">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Fluent Design Seite</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>D&D Spielsitzung</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <!-- Seitenleiste -->
-    <div class="sidebar">
-        <div class="sidebar-content">
-            <h2>Menu</h2>
-            <div class="fluent-design menu-text">
-                <div class="badge menu-text">
-                <h3>test</h3>
-                <p>example1dwaa>
-                example1dwaaaa</p>
-            </div>
-                <h3>Badge</h3>
-                <p>Dies ist ein Beispiel für ein Badge-Element mit Mica-Effekt.</p>
-            </div>
-            <div class="button menu-text">
-                <h3>Button</h3>    
-            </div>
-        </div>
-    </div>
+    <button onclick="speichereDaten()">Daten speichern</button>
+    <header>
+        <h1>Meine D&D Spielsitzung</h1>
+    </header>
+    <main>
+        <section id="einstellungen">
+            <h2>Einstellungen</h2>
+            <label for="spieleranzahl">Spieleranzahl:</label>
+            <select id="spieleranzahl">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </section>
 
-    <button class="open-button" onclick="toggleSidebar()">☰</button>
-    
-
-    <div class="content">
-        <header>
-            <div class="top-bar">
-                <h1></h1>
+        <section id="spieler">
+            <h2>Spieler</h2>
+            <div id="spielerliste">
+                <!-- Hier werden die Spieler basierend auf der Spieleranzahl dynamisch hinzugefügt -->
             </div>
-        </header>
-        <div class="fluent-design">
-            <h2>dwdawdawdwadwadadawdad</h2>
-            <p>Dies ist ein Beispiel für ein Element im Fluent Design mit Mica-Effekt.</p>
+        </section>
+
+        <section id="wuerfeln">
+            <h2>Würfeln</h2>
+            <label for="wuerfelauswahl">Würfelauswahl:</label>
+            <select id="wuerfelauswahl">
+                <option value="d4">d4</option>
+                <option value="d6">d6</option>
+                <option value="d8">d8</option>
+                <option value="d10">d10</option>
+                <option value="d12">d12</option>
+                <option value="d20">d20</option>
+            </select>
+            <button onclick="wuerfeln()">Würfeln</button>
+        </section>
+        <div id="wuerfelergebnis-container">
+            <p>Würfelergebnis:</p>
+            <span id="wuerfelergebnis">-</span>
         </div>
-        <div class="badge">
-            <h2>Badge</h2>
-            <p>Dies ist ein Beispiel für ein Badge-Element mit Mica-Effekt.</p>
+    </main>
+    <footer>
+        <p>&copy; 2023 Deine Webseite</p>
+    </footer>
+
+    <section id="gegner">
+        <h2>Gegner</h2>
+        <label for="anzahlGegner">Anzahl der Gegner:</label>
+        <input type="number" id="anzahlGegner" min="1">
+        <button onclick="generiereGegner()">Generiere Gegner</button>
+        <div id="gegnerliste">
+            <!-- Hier werden die generierten Gegner angezeigt -->
         </div>
-        <div class="button">
-            <h2>Button</h2>
-            <p>Dies ist ein Beispiel für ein Button-Element mit Mica-Effekt.</p>
-        </div>
-        <div class="download">
-            <header>
-                
-            <h1>click downlaod</h1>
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 20.5h13.498a.75.75 0 0 1 .101 1.493l-.101.007H5.25a.75.75 0 0 1-.102-1.494l.102-.006h13.498H5.25Zm6.633-18.498L12 1.995a1 1 0 0 1 .993.883l.007.117v12.59l3.294-3.293a1 1 0 0 1 1.32-.083l.094.084a1 1 0 0 1 .083 1.32l-.083.094-4.997 4.996a1 1 0 0 1-1.32.084l-.094-.083-5.004-4.997a1 1 0 0 1 1.32-1.498l.094.083L11 15.58V2.995a1 1 0 0 1 .883-.993L12 1.995l-.117.007Z" fill="#ffffff"/></svg>
-            </header>
-        </div>
-</header>
-    </div>
-    <script src="script.js"></script>
-    <canvas id="backgroundCanvas"></canvas>
+    </section>
+
     <script>
-        var title = document.querySelector('title');
-        title.innerText = 'Home';
-    
-        const canvas = document.getElementById('backgroundCanvas');
-        const context = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    
-        const numStars = 110; // Anzahl der Sterne
-        const starRadiusMin = 1; // Minimaler Durchmesser der Sterne
-        const starRadiusMax = 2; // Maximaler Durchmesser der Sterne
-        const starSpeed = 0.01; // Geschwindigkeit der Sternbewegung
-        const connectDistance = 160; // Maximale Verbindungsdistanz der Sterne
-    
-        let stars = [];
-    
-        class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.radius = Math.random() * (starRadiusMax - starRadiusMin) + starRadiusMin;
-                this.angle = Math.random() * Math.PI * 2; // Zufälliger Winkel für die Bewegung
-                this.speed = 0.1; // Langsame Bewegungsgeschwindigkeit
-            }
-    
-            update() {
-                this.x += Math.cos(this.angle) * this.speed;
-                this.y += Math.sin(this.angle) * this.speed;
-    
-                // Begrenze die Position, um die Sterne innerhalb des Canvas zu halten
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.angle = Math.random() * Math.PI * 2;
-                }
-            }
+        // JavaScript für Würfeln
+        function wuerfeln() {
+            const wuerfelauswahl = document.getElementById("wuerfelauswahl").value;
+            const wuerfelergebnis = Math.floor(Math.random() * parseInt(wuerfelauswahl.substring(1)) + 1);
+            document.getElementById("wuerfelergebnis").textContent = wuerfelergebnis;
         }
-    
-        function draw() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-    
-            for (const star of stars) {
-                star.update();
-    
-                context.beginPath();
-                context.arc(star.x)
+
+        document.getElementById("spieleranzahl").addEventListener("change", function() {
+            const spieleranzahl = parseInt(this.value);
+            const spielerliste = document.getElementById("spielerliste");
+            
+            spielerliste.innerHTML = ""; // Lösche vorherige Spieler
+
+            for (let i = 1; i <= spieleranzahl; i++) {
+                const spielerForm = document.createElement("div");
+                spielerForm.innerHTML = `
+                    <h3>Spieler ${i}</h3>
+                    <label for="spielername${i}">Name:</label>
+                    <input type="text" id="spielername${i}">
+                    <label for="klasse${i}">Klasse:</label>
+                    <select id="klasse${i}">
+                        <option value="Krieger">Krieger</option>
+                        <option value="Magier">Magier</option>
+                        <option value="Schurke">Schurke</option>
+                        <option value="Heiler">Heiler</option>
+                        <!-- Weitere Klassen hinzufügen -->
+                    </select>
+                    <label for="rasse${i}">Rasse:</label>
+                    <select id="rasse${i}">
+                        <option value="Mensch">Mensch</option>
+                        <option value="Elf">Elf</option>
+                        <!-- Andere Rassen einfügen -->
+                    </select>
+                    <label for="fantasieattribut${i}">Fantasieattribut:</label>
+                    <select id="fantasieattribut${i}">
+                        <option value="Stärke">Stärke</option>
+                        <option value="Intelligenz">Intelligenz</option>
+                        <option value="Geschicklichkeit">Geschicklichkeit</option>
+                        <!-- Weitere Fantasieattribute hinzufügen -->
+                    </select>
+                    <label for="startkapital${i}">Startkapital:</label>
+                    <input type="number" id="startkapital${i}" min="0">
+                    <label for="lebenspunkte${i}">Lebenspunkte:</label>
+                    <input type="number" id="lebenspunkte${i}" min="0">
+                    <button onclick="bearbeiteSpieler(${i})">Bearbeiten</button>
+                `;
+
+                spielerliste.appendChild(spielerForm);
             }
+        });
+        function bearbeiteSpieler(spielerNummer) {
+            // Hier kannst du die Logik zum Bearbeiten eines bestimmten Spielers hinzufügen
+            const spielerName = document.getElementById(`spielername${spielerNummer}`).value;
+            const spielerKlasse = document.getElementById(`klasse${spielerNummer}`).value;
+            const spielerRasse = document.getElementById(`rasse${spielerNummer}`).value;
+            const fantasieAttribut = document.getElementById(`fantasieattribut${spielerNummer}`).value;
+            const startkapital = parseInt(document.getElementById(`startkapital${spielerNummer}`).value);
+            const lebenspunkte = parseInt(document.getElementById(`lebenspunkte${spielerNummer}`).value);
+
+            // Weitere Spielerdaten verarbeiten
+            console.log(`Spieler ${spielerNummer} bearbeitet: 
+                Name: ${spielerName}, Klasse: ${spielerKlasse}, Rasse: ${spielerRasse}, 
+                Fantasieattribut: ${fantasieAttribut}, Startkapital: ${startkapital}, Lebenspunkte: ${lebenspunkte}`);
         }
+        function generiereGegner() {
+    const anzahlGegner = parseInt(document.getElementById("anzahlGegner").value);
+    const gegnerliste = document.getElementById("gegnerliste");
+    gegnerliste.innerHTML = "";
+
+    for (let i = 1; i <= anzahlGegner; i++) {
+        const name = generiereGegnerName();
+        const staerke = generiereZufallszahl(1, 10);
+        const lebenspunkte = generiereZufallszahl(1, 10);
+
+        const gegnerDiv = document.createElement("div");
+        gegnerDiv.innerHTML = `
+            <h3>Gegner ${i}</h3>
+            <p>Name: ${name}</p>
+            <p>Stärke: ${staerke}</p>
+            <p>Lebenspunkte: ${lebenspunkte}</p>
+        `;
+
+        gegnerliste.appendChild(gegnerDiv);
+    }
+}
+
+function generiereGegnerName() {
+    const gegnerNamen = ["Goblin", "Ork", "Troll", "Drache", "Zombie", "Oger", "Banshee", "Hexenmeister", "Skelett", "Hobgoblin"];
+    return gegnerNamen[Math.floor(Math.random() * gegnerNamen.length)];
+}
+
+function generiereZufallszahl(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function speichereDaten() {
+    const spieleranzahl = parseInt(document.getElementById("spieleranzahl").value);
+    const daten = [];
+
+    for (let i = 1; i <= spieleranzahl; i++) {
+        const spielerName = document.getElementById(`spielername${i}`).value;
+        const spielerKlasse = document.getElementById(`klasse${i}`).value;
+        const spielerRasse = document.getElementById(`rasse${i}`).value;
+        const fantasieAttribut = document.getElementById(`fantasieattribut${i}`).value;
+        const startkapital = parseInt(document.getElementById(`startkapital${i}`).value);
+        const lebenspunkte = parseInt(document.getElementById(`lebenspunkte${i}`).value);
+
+        daten.push(`Spieler ${i}:
+Name: ${spielerName}
+Klasse: ${spielerKlasse}
+Rasse: ${spielerRasse}
+Fantasieattribut: ${fantasieAttribut}
+Startkapital: ${startkapital}
+Lebenspunkte: ${lebenspunkte}
+`);
+    }
+
+    const datenAlsText = daten.join("\n");
+    const blob = new Blob([datenAlsText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "spielerdaten.txt";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+
     </script>
-    
 </body>
 </html>
