@@ -1,0 +1,281 @@
+/* Globale CSS-Stile */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: 12px;
+    margin-right: 4px;
+    max-width: 500px;
+    max-height: 100%;
+    background-image: url(windows-11-1920x1080-microsoft-4k-23884.jpg);
+    background-size: 100%;
+}
+
+
+
+.sidebar.dark-mode {
+    background-color: #222; /* Dunkler Hintergrund der Seitenleiste */
+    color: #fff; /* Heller Text in der Seitenleiste */
+}
+
+.fluent-design, .badge, .button {
+    color: #fff; /* Heller Text in den Fluent-Design-Elementen im Dark Mode */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2); /* Dunklerer Schatten im Dark Mode */
+    max-width: 500px;
+    max-height: 100%;
+  }
+
+.h2 {
+    flex: 1;
+    transition: 0.5s;
+    margin: 12px;
+    margin-left: 250px;
+    margin-top: 8px;
+    z-index: 1;
+    position: relative;
+}
+/* Seitenleisten-Stil */
+.sidebar {
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #00A6FB;
+    width: 250px;
+    height: 100%;
+    max-width: 250px;
+    max-height: 100%;
+    position: fixed;
+    margin-top: px;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin: 8px 8px 8px 8px;
+    background-color: #343434;
+    box-shadow: 0 3px 3px rgba(#343434 1);
+    
+    
+}
+
+/*text in der sidebar */
+.sidebar h2 { 
+    color: white;
+    margin: 12px 12px 8px 8px;
+
+}
+
+.open-button {
+    background: none;
+    color: #00A6FB;
+    border: none;
+    padding: 10px 15px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.content {
+    flex: 1;
+    transition: 0.5s;
+    margin: 12px;
+    margin-left: 280px;
+    margin-top: 8px;
+    z-index: 1;
+    position: relative;
+    border-color: #343434;
+    border: 1px solid;
+    border-color: #00A6FB;
+    border-radius: 8px;
+}
+
+/* Fluent-2-Stil (Beispiel) */
+.fluent-design, .badge, .button {
+    position: relative;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 24px;
+    overflow: hidden;
+    background: #c9dcffff; /* Hintergrundfarbe der Container */
+    transition: all 0.3s;
+    background: linear-gradient(62deg, #EE7752, #E73C7E);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #00A6FB;
+}
+
+.fluent-design::before, .badge::before, .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 8px;
+    background: linear-gradient(62deg, #EE7752, #E73C7E);
+    filter: blur(10px);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border: 1px solid;
+    border-color: #00A6FB;
+}
+
+.fluent-design:hover, .badge:hover, .button:hover {
+    /* Aktuelles Hintergrundbild entfernen */
+    content: "";
+    border-radius: 8px;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: auto;
+	animation: gradient 15s ease infinite;
+	height: auto;
+    background: linear-gradient(62deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+     animation: gradient 15s ease infinite; 
+      background-size: 400% 400%;
+      border: 1px solid;
+      border-color: #343434 0.2;
+  
+}
+@-webkit-keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+@keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.fluent-design:hover::before, .badge:hover::before, .button:hover::before {
+    opacity: 3;
+}
+
+.menu-text {
+    margin: 8px 12px;
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 8px;
+    background-color: #343434 0.6;
+    border: 1px solid;
+    border-color: #343434;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.download:hover {
+    /* Aktuelles Hintergrundbild entfernen */
+    content: "";
+    border-radius: 8px;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: auto;
+	animation: gradient 15s ease infinite;
+	height: auto;
+    background: linear-gradient(62deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+     animation: gradient 15s ease infinite; 
+      background-size: 400% 400%;
+      border: 1px solid;
+      border-color: #343434;
+  }
+  
+@-webkit-keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+@keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.showcode {
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.download:hover {
+    opacity: 3;
+}
+
+.download {
+    text-align: center;
+    position: relative;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 18px;
+    overflow: hidden;
+    background: #c9dcffff; /* Hintergrundfarbe der Container */
+    transition: all 0.3s;
+    background: linear-gradient(62deg, #EE7752, #E73C7E);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    max-width: 580px;
+    max-height: 100%;
+    border: 1px solid;
+    border-color: #00A6FB;
+}
+
