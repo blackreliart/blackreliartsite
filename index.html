@@ -1,286 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="dark-mode.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        body {
-            display: flex;
-            min-height: 100vh;
-            font-family: "Helvetica", sans-serif;
-            overflow: hidden;
-            background-image: url("https://wallpapershome.com/images/pages/pic_h/23887.jpg");
-            /*background-color: black; /* Change to black background */
-        }
-
-        .wrap {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center center;
-            display: flex;
-        }
-
-        .fluentdesign {
-            border-radius: 14px;
-            margin: auto;
-            position: relative;
-            width: 50%;
-            height: 300px;
-            background: transparent;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-        }
-
-        .fluentdesign__container {
-            border-radius: 14px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            border-radius: 1px;
-            display: flex;
-        }
-
-        .fluentdesign__container:before,
-        .fluentdesign__container:after {
-            content: "";
-            position: absolute;
-            z-index: 1;
-            border-radius: 14px;
-        }
-
-        .fluentdesign__container:before {
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            -webkit-filter: blur(10px);
-            filter: blur(10px);
-        }
-
-        .fluentdesign__container:after {
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.3); /* Change to white */
-            backdrop-filter: blur(10px);
-            z-index: 2;
-        }
-
-        .fluentdesign__title {
-            font-size: 6vmin;
-            position: relative;
-            margin: auto;
-            z-index: 100;
-            color: white; /* Change to white */
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-
-        /* Stile für die Suchleiste */
-        .search-bar {
-    position: absolute;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.1); /* Change to black with some transparency */
-    padding: 10px;
-    border-radius: 14px;
-    z-index: 100;
-}
-
-        .search-input {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-family: "Helvetica";
-            border-radius: 14px;
-        }
-
-        .search-button {
-            padding: 8px 20px;
-            border: none;
-            background-color: black; /* Change to black */
-            color: white;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            flex: 3;
-            z-index: 99;
-        }
-
-        .search-button:hover {
-            background-color: gray; /* Change to a lighter shade of gray */
-        }
-
-        .fluentdesign__title {
-            position: absolute;
-            top: 42%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; /* Höhere Z-Ebene für den oberen Titel */
-            text-align: center;
-            width: 100%;
-            padding: 0 20px;
-            color: white; /* Change to white */
-            transition: background-color 0.3s;
-            animation: animate 2s ease-in-out infinite;
-            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
-        }
-
-        /*.fluentdesign__title_bottom {
-            position: absolute;
-            top: 42%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-            padding: 0 20px;
-            color: white; /* Change to white */
-          /*.  z-index: 3;
-          /*.  font-size: 58px; /* Setzen Sie die Schriftgröße auf dieselbe Größe wie fluentdesign__title */
-          /*.  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
-        }
-*/
-        @keyframes animate {
-            0%, 100% {
-                clip-path: polygon(
-                    0% 45%,
-                    16% 44%,
-                    33% 50%,
-                    54% 60%,
-                    70% 61%,
-                    84% 59%,
-                    100% 52%,
-                    100% 100%,
-                    0% 100%
-                );
-            }
-
-            50% {
-                clip-path: polygon(
-                    0% 60%,
-                    15% 65%,
-                    34% 66%,
-                    51% 62%,
-                    67% 50%,
-                    84% 45%,
-                    100% 46%,
-                    100% 100%,
-                    0% 100%
-                );
-            }
-        }
-
-    </style>
+    <title>Meine Fluent Design Seite</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="wrap">
-        <div class="fluentdesign">          
-            <div class="fluentdesign__container">
-                <div class="search-bar">
-                    <form action="https://www.google.com/search" method="SET" target="_
-                    blank">
-                    <input type="text" class="search-input" name="q" placeholder="Search on Google">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
+    <!-- Seitenleiste -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <h2>Menu</h2>
+            <div class="fluent-design menu-text">
+                <div class="badge menu-text">
+                <h3>test</h3>
+                <p>example1dwaa>
+                example1dwaaaa</p>
+            </div>
+                <h3>Badge</h3>
+                <p>Dies ist ein Beispiel für ein Badge-Element mit Mica-Effekt.</p>
+            </div>
+            <div class="button menu-text">
+                <h3>Button</h3>    
             </div>
         </div>
     </div>
-    <div class="fluentdesign__title">
-        <h1>Google</h1>
+
+    <button class="open-button" onclick="toggleSidebar()">☰</button>
+    
+
+    <div class="content">
+        <header>
+            <div class="top-bar">
+                <h1></h1>
+            </div>
+        </header>
+        <div class="fluent-design">
+            <h2>dwdawdawdwadwadadawdad</h2>
+            <p>Dies ist ein Beispiel für ein Element im Fluent Design mit Mica-Effekt.</p>
+        </div>
+        <div class="badge">
+            <h2>Badge</h2>
+            <p>Dies ist ein Beispiel für ein Badge-Element mit Mica-Effekt.</p>
+        </div>
+        <div class="button">
+            <h2>Button</h2>
+            <p>Dies ist ein Beispiel für ein Button-Element mit Mica-Effekt.</p>
+        </div>
+        <div class="download">
+            <header>
+                
+            <h1>click downlaod</h1>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 20.5h13.498a.75.75 0 0 1 .101 1.493l-.101.007H5.25a.75.75 0 0 1-.102-1.494l.102-.006h13.498H5.25Zm6.633-18.498L12 1.995a1 1 0 0 1 .993.883l.007.117v12.59l3.294-3.293a1 1 0 0 1 1.32-.083l.094.084a1 1 0 0 1 .083 1.32l-.083.094-4.997 4.996a1 1 0 0 1-1.32.084l-.094-.083-5.004-4.997a1 1 0 0 1 1.32-1.498l.094.083L11 15.58V2.995a1 1 0 0 1 .883-.993L12 1.995l-.117.007Z" fill="#ffffff"/></svg>
+            </header>
+        </div>
+</header>
     </div>
-    <div class="overlay"></div>
+    <script src="script.js"></script>
     <canvas id="backgroundCanvas"></canvas>
-</div>
-
-
-
-<script>
-    var title = document.querySelector('title');
-    title.innerText = 'Home';
-
-    const canvas = document.getElementById('backgroundCanvas');
-    const context = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const numStars = 110; // Anzahl der Sterne
-    const starRadiusMin = 1; // Minimaler Durchmesser der Sterne
-    const starRadiusMax = 2; // Maximaler Durchmesser der Sterne
-    const starSpeed = 0.01; // Geschwindigkeit der Sternbewegung
-    const connectDistance = 160; // Maximale Verbindungsdistanz der Sterne
-
-    let stars = [];
-
-    class Star {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.radius = Math.random() * (starRadiusMax - starRadiusMin) + starRadiusMin;
-            this.angle = Math.random() * Math.PI * 2; // Zufälliger Winkel für die Bewegung
-            this.speed = 0.1; // Langsame Bewegungsgeschwindigkeit
-        }
-
-        update() {
-            this.x += Math.cos(this.angle) * this.speed;
-            this.y += Math.sin(this.angle) * this.speed;
-
-            // Begrenze die Position, um die Sterne innerhalb des Canvas zu halten
-            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+    <script>
+        var title = document.querySelector('title');
+        title.innerText = 'Home';
+    
+        const canvas = document.getElementById('backgroundCanvas');
+        const context = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        const numStars = 110; // Anzahl der Sterne
+        const starRadiusMin = 1; // Minimaler Durchmesser der Sterne
+        const starRadiusMax = 2; // Maximaler Durchmesser der Sterne
+        const starSpeed = 0.01; // Geschwindigkeit der Sternbewegung
+        const connectDistance = 160; // Maximale Verbindungsdistanz der Sterne
+    
+        let stars = [];
+    
+        class Star {
+            constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.angle = Math.random() * Math.PI * 2;
+                this.radius = Math.random() * (starRadiusMax - starRadiusMin) + starRadiusMin;
+                this.angle = Math.random() * Math.PI * 2; // Zufälliger Winkel für die Bewegung
+                this.speed = 0.1; // Langsame Bewegungsgeschwindigkeit
+            }
+    
+            update() {
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+    
+                // Begrenze die Position, um die Sterne innerhalb des Canvas zu halten
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.angle = Math.random() * Math.PI * 2;
+                }
             }
         }
-    }
-
-    function draw() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (const star of stars) {
-            star.update();
-
-            context.beginPath();
-            context.arc(star.x)
+    
+        function draw() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+    
+            for (const star of stars) {
+                star.update();
+    
+                context.beginPath();
+                context.arc(star.x)
+            }
         }
-    }
+    </script>
+    
+</body>
+</html>
